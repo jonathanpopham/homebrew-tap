@@ -9,9 +9,17 @@ cask "beckon" do
 
   app "Beckon.app"
 
+  # The build is ad-hoc signed, not notarized, so Gatekeeper would block
+  # the first open. Strip the quarantine attribute on install; the source
+  # is public if you would rather build and sign it yourself.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Beckon.app"],
+                   sudo: false
+  end
+
   caveats <<~EOS
-    This build is ad-hoc signed, not notarized. Install with
-    --no-quarantine to skip the Gatekeeper prompt, or right-click
-    Beckon.app and choose Open once. Source: #{homepage}
+    Beckon is ad-hoc signed, not notarized. This cask clears the
+    quarantine flag for you. Source: #{homepage}
   EOS
 end
