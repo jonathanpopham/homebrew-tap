@@ -1,6 +1,6 @@
 cask "beckon" do
-  version "0.1.4"
-  sha256 "376dee1b8d66e32b0e9b5b239f20831269e468e1abbe931416a5799d3554bf80"
+  version "0.1.5"
+  sha256 "9a3b39688b7e593fe73fd721cc8f4d5222bde1d012bff13673ba4978ae48bc31"
 
   url "https://github.com/jonathanpopham/beckon/releases/download/v#{version}/Beckon-v#{version}.zip"
   name "Beckon"
